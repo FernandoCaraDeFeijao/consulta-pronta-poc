@@ -12,4 +12,14 @@ function get_src_url_from_root() {
 define("SRC_URL", get_src_url_from_root());
 define("PAGE_URL", SRC_URL . "/pages");
 
+
+date_default_timezone_set("America/Sao_Paulo");
 session_start();
+
+
+require_once __DIR__ . "/../config/database.php";
+
+
+function get_post($name) {
+	return filter_input(INPUT_POST, $name);
+}
