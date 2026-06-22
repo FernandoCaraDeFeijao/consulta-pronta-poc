@@ -115,11 +115,11 @@
         }
     }
 
-    function add_new_clinic_note($profissional_id, $datetime, $evolution_text, $diagnostic_hypothesis) {
+    function add_new_clinic_note($profissional_id, $report_id, $datetime, $evolution_text, $diagnostic_hypothesis) {
         $connection = connect_to_database();
 
         $sql_command = "INSERT INTO anotacao_clinica VALUES
-        ($profissional_id, '$datetime', '$evolution_text', '$diagnostic_hypothesis')";
+        ($profissional_id, $report_id, '$datetime', '$evolution_text', '$diagnostic_hypothesis')";
 
         if (mysqli_query($connection, $sql_command)) {
             // handle succesful query
@@ -128,11 +128,11 @@
         }
     }
 
-    function add_new_report($pacient_id, $clinic_note_id, $gen_date, $period_analyzed, $analytical_data) {
+    function add_new_report($pacient_id, $gen_date, $title, $period_analyzed, $analytical_data) {
         $connection = connect_to_database();
 
         $sql_command = "INSERT INTO relatorio VALUES
-        ($pacient_id, $clinic_note_id, '$gen_date', '$period_analyzed', '$analytical_data')";
+        ($pacient_id, '$gen_date', '$title', '$period_analyzed', '$analytical_data')";
 
         if (mysqli_query($connection, $sql_command)) {
             // handle succesful query
