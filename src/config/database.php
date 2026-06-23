@@ -39,13 +39,13 @@
         $connection = connect_to_database();
         $user_id = add_new_user($connection, $name, $cpf, $email, $password, "paciente", $signup_date);
 
-        $sql_command = "INSERT INTO paciente VALUES
-        ($user_id, '$birth_date', '$height', '$weight', '$allergies', '$family_history', '$diseases', '$blood_type')";
+        $sql_command = "INSERT INTO paciente (user_id, data_nascimento, altura, peso, alergias, historico_familiar, doencas, tipo_sanguineo)
+        VALUES ($user_id, '$birth_date', '$height', '$weight', '$allergies', '$family_history', '$diseases', '$blood_type')";
 
         if (mysqli_query($connection, $sql_command)) {
             return $user_id;
         } else {
-            // handle failed query
+            return -1;
         }
     }
     
@@ -158,16 +158,13 @@
         $error = [];
 
         $table = ($user_type == "paciente") ? "paciente" : "profissional";
-        $sql_command_email = "SELECT * FROM $table WHERE email = $email";
-        $sql_command_cpf = "SELECT * FROM $table WHERE cpf = $cpf";
+        $sql_command_email = "SELECT * FROM `$table` WHERE email = \"$email\"";
+        $sql_command_cpf = "SELECT * FROM `$table` WHERE cpf = \"$cpf\"";
+    
+        if (mysqli_num_rows(mysqli_query($connection, $sql_command_email)) > 0) $error["email"] = true;
+        if (mysqli_num_rows(mysqli_query($connection, $sql_command_cpf)) > 0) $error["cpf"] = true;
 
-        $query_email = mysqli_fetch_array(mysqli_query($connection, $sql_command_email, MYSQLI_NUM));
-        $query_cpf = mysqli_fetch_array(mysqli_query($connection, $sql_command_cpf, MYSQLI_NUM));
-        
-        
-        if (!empty($query_email)) $error["email"] = true;
-
-        if (!empty($query_cpf)) $error["cpf"] = true;
+        var_dump($connection);
 
         return $error;
     }

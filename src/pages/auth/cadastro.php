@@ -6,36 +6,36 @@ $erro = "";
 $form_enviado = ($_SERVER["REQUEST_METHOD"] == "POST");
 
 if ($form_enviado) {
-	$tipo = filter_input(INPUT_POST, "tipo");
-	$nome = filter_input(INPUT_POST, "nome");
+	$tipo = get_post("tipo");
+	$nome = get_post("nome");
 	$email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
-	$cpf = filter_input(INPUT_POST, "cpf");
-	$senha = filter_input(INPUT_POST, "senha");
-	$senha_confirmar = filter_input(INPUT_POST, "senha_confirmar");
-	$termos = filter_input(INPUT_POST, "termos");
+	$cpf = get_post("cpf");
+	$senha = get_post("senha");
+	$senha_confirmar = get_post("senha_confirmar");
+	$termos = get_post("termos");
+
+	$data_nasc = "2000-06-07";
+	$altura = 1.1;
+	$peso = 1.6;
 
 	if ($tipo && $nome && $email && $senha) {
 		$user_checked = check_if_user_exists($tipo, $email, $cpf);
-
-        if (isset($user_checked["cpf"])) {
-            $erro = "Usuário com esse CPF já existe";
-        } elseif (isset($user_checked["email"])) {
-            $erro = "Usuário com esse email já existe";
-        }
+	
+		$conta_existe = (isset($user_checked["cpf"]) || isset($user_checked["email"])) ? true : false;
 
 		if ($senha != $senha_confirmar) {
 			$erro = "Senhas digitadas estão diferentes";
 		} elseif (!$termos) {
 			$erro = "É necessário concordar com os termos para usar o ConsultaPronta";
-		} elseif (false /* TESTE */) {
-			$erro = "Conta já existe.";
+		} elseif ($conta_existe) {
+			$erro = (isset($user_checked["cpf"])) ? "Usuário com esse CPF já existe" : "Usuário com esse email já existe";
 		} else {
 			$_SESSION["logado"] = true;
-			$_SESSION["id_usuario"] = 1;
+			$_SESSION["id_usuario"] = add_new_pacient($nome, $cpf, $email, $senha, date("Y-m-d"), $data_nasc, $altura, $peso, "", "", "", "");
 			$_SESSION["tipo_usuario"] = $tipo;
-
-			header("Location: ../$tipo/index.php");
-			exit();
+			echo $_SESSION["id_usuario"];
+			// header("Location: ../$tipo/index.php");
+			// exit();
 		}
 	} else {
 		$erro = "Inputs preenchidos incorretamente.";
@@ -61,7 +61,7 @@ if ($form_enviado) {
 			echo "<p style='color: red;'>$erro</p>";
 		}
 	?>
-	<form method="post">
+	<form method="post" name="form">
 		<fieldset id="tipo">
 			<input type="radio" name="tipo" id="paciente" value="paciente" checked>
 			<label for="paciente">Paciente</label>
@@ -116,6 +116,21 @@ if ($form_enviado) {
 			.replace(/(-\d{2})\d+?$/, '$1'); // Impede entrada de mais de 11 dígitos
 		e.target.value = cpfPattern;
 		});
+
+		async function hash(message) {
+			const msgBuffer = new TextEncoder().encode(message);
+			const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+			const hashArray = Array.from(new Uint8Array(hashBuffer));
+			const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+
+			return hashHex;
+		}
+
+		document.addEventListener("submit", (e) => {
+			document.form.password.value = hash(message);
+
+			return true;
+		})
 	</script>
 </body>
 </html>
