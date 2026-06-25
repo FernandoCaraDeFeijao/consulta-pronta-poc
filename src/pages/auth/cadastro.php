@@ -57,6 +57,9 @@ if ($form_enviado) {
 	<img src="<?= SRC_URL ?>/icons/logo.png" alt="logo consulta pronta" id="logo">
 
 	<?php
+	echo "`teste`";
+	echo "'teste'";
+
 		if (!empty($erro)) {
 			echo "<p style='color: red;'>$erro</p>";
 		}
@@ -117,20 +120,20 @@ if ($form_enviado) {
 		e.target.value = cpfPattern;
 		});
 
-		async function hash(message) {
-			const msgBuffer = new TextEncoder().encode(message);
-			const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-			const hashArray = Array.from(new Uint8Array(hashBuffer));
-			const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+		// async function hash(message) {
+		// 	const msgBuffer = new TextEncoder().encode(message);
+		// 	const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+		// 	const hashArray = Array.from(new Uint8Array(hashBuffer));
+		// 	const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
 
-			return hashHex;
-		}
+		// 	return hashHex;
+		// }
 
-		document.addEventListener("submit", (e) => {
-			document.form.password.value = hash(message);
+		// document.addEventListener("submit", (e) => {
+		// 	document.form.password.value = hash(message);
 
-			return true;
-		})
+		// 	return true;
+		// })
 	</script>
 </body>
 </html>
