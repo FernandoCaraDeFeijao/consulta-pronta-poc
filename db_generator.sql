@@ -2,13 +2,13 @@ CREATE DATABASE IF NOT EXISTS consultapronta_poc;
 USE consultapronta_poc;
 
 CREATE TABLE IF NOT EXISTS contato (
-    id_contato INTEGER PRIMARY KEY,
+    id_contato INTEGER AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(20),
     valor VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS usuario (
-    id_usuario INTEGER PRIMARY KEY,
+    id_usuario INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_contato INTEGER,
     nome VARCHAR(100),
     cpf VARCHAR(11),
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS profissional (
 );
 
 CREATE TABLE IF NOT EXISTS sintoma (
-    id_sintoma INTEGER PRIMARY KEY,
+    id_sintoma INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_paciente INTEGER,
     descricao VARCHAR(300),
     intensidade SMALLINT,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS sintoma (
 );
 
 CREATE TABLE IF NOT EXISTS autorizacao (
-    id_autorizacao INTEGER PRIMARY KEY,
+    id_autorizacao INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_paciente INTEGER,
     id_profissional INTEGER,
     data_concessao DATE,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS autorizacao (
 );
 
 CREATE TABLE IF NOT EXISTS prescricao (
-    id_prescricao INTEGER PRIMARY KEY,
+    id_prescricao INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_paciente INTEGER,
     id_profissional INTEGER,
     medicamentos TEXT,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS prescricao (
 );
 
 CREATE TABLE IF NOT EXISTS exame (
-    id_exame INTEGER PRIMARY KEY,
+    id_exame INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_paciente INTEGER,
     id_profissional INTEGER,
     titulo VARCHAR(100),
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS exame (
 );
 
 CREATE TABLE IF NOT EXISTS relatorio (
-    id_relatorio INTEGER PRIMARY KEY,
+    id_relatorio INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_paciente INTEGER,
     data_geracao DATE,
     titulo VARCHAR(100),
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS relatorio (
 );
 
 CREATE TABLE IF NOT EXISTS anotacao_clinica (
-    id_anotacao INTEGER PRIMARY KEY,
+    id_anotacao INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_profissional INTEGER,
     id_relatorio INTEGER,
     data_hora TIMESTAMP,
