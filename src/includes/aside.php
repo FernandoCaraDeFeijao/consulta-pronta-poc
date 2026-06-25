@@ -39,5 +39,6 @@
 
 	<div id="aside_bottom">
 		<a href="<?= PAGE_URL ?>/paciente/perfil.php">Perfil</a>
+		<a href="<?= PAGE_URL ?>/sair.php">Sair</a>
 	</div>
 </aside>
