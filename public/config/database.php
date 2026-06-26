@@ -188,4 +188,26 @@
         return $error;
     }
 
+	function get_patient($id) {
+		$connection = connect_to_database();
+
+		$sql_command = "SELECT * FROM paciente WHERE id_paciente = '$id'";
+		$result = mysqli_query($connection, $sql_command);
+
+		return mysqli_fetch_assoc($result);
+	}
+
+	function get_patient_data($id, $table) {
+		$connection = connect_to_database();
+
+		$sql_command = "
+			SELECT {$table}.*
+			FROM paciente
+			INNER JOIN $table ON paciente.id_paciente = {$table}.id_paciente
+			WHERE paciente.id_paciente = $id
+		";
+		$result = mysqli_query($connection, $sql_command);
+
+		return mysqli_fetch_all($result, MYSQLI_ASSOC);
+	}
 ?>

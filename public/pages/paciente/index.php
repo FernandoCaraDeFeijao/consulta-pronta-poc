@@ -24,7 +24,17 @@
 				<h3>Prescrições</h3>
 
 				<div class="lista">
-					<p class="mensagem">Não há prescrições</p>
+					<?php
+						$prescricoes = get_patient_data($_SESSION["id_usuario"], "prescricao");
+						if (empty($sintomas)) {
+							echo "<p class=\"mensagem\">Não há prescrições</p>";
+						} else {
+							foreach ($prescricoes as $prescricao) {
+								echo "<article class=\"light\">". implode(", ", $prescricao) ."</article>";
+							}
+						}
+					?>
+					<p class="mensagem"></p>
 				</div>
 			</article>
 
@@ -32,7 +42,16 @@
 				<h3>Consultas próximas</h3>
 
 				<div class="lista">
-					<p class="mensagem">Não há consultas marcadas</p>
+					<?php
+						$consultas = get_patient_data($_SESSION["id_usuario"], "consulta");
+						if (empty($sintomas)) {
+							echo "<p class=\"mensagem\">Não há consultas marcadas</p>";
+						} else {
+							foreach ($consultas as $consulta) {
+								echo "<article class=\"light\">". implode(", ", $consulta) ."</article>";
+							}
+						}
+					?>
 				</div>
 			</article>
 
@@ -40,9 +59,16 @@
 				<h3>Sintomas recentes</h3>
 
 				<div class="lista">
-					<article class="light">Das</article>
-					<article class="light">Das</article>
-					<article class="light">Das</article>
+					<?php
+						$sintomas = get_patient_data($_SESSION["id_usuario"], "sintoma");
+						if (empty($sintomas)) {
+							echo "<p class=\"mensagem\">Não há sintomas registrados</p>";
+						} else {
+							foreach ($sintomas as $sintoma) {
+								echo "<article class=\"light\">". implode(", ", $sintoma) ."</article>";
+							}
+						}
+					?>
 				</div>
 			</article>
 		</section>
