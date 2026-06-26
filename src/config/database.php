@@ -153,6 +153,25 @@
         }
     }
 
+	function user_exists($column, $value) {
+		$connection = connect_to_database();
+
+		$sql_command = "SELECT * FROM usuario WHERE $column = '$value'";
+		$result = mysqli_query($connection, $sql_command);
+
+		return mysqli_num_rows($result) > 0;
+	}
+
+	function get_user($email) {
+		$connection = connect_to_database();
+
+		$sql_command = "SELECT * FROM usuario WHERE email = '$email'";
+		$result = mysqli_query($connection, $sql_command);
+
+		return mysqli_fetch_assoc($result);
+	}
+
+	// DEPRECATED (maybe)
     function check_if_user_exists($user_type, $email, $cpf) {
         $connection = connect_to_database();
         $error = [];

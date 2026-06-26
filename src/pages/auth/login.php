@@ -5,26 +5,22 @@ $erro = "";
 $form_enviado = ($_SERVER["REQUEST_METHOD"] == "POST");
 
 if ($form_enviado) {
-	$tipo = filter_input(INPUT_POST, "tipo");
-	$email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
-	$senha = filter_input(INPUT_POST, "senha");
+	$email = get_post("email");
+	$senha = get_post("senha_hash");
 
-	if ($tipo && $email && $senha) {
-		// TESTE
-		if ($email === "teste@teste.com" && $senha === "123456") {
-			$_SESSION["logado"] = true;
-			$_SESSION["id_usuario"] = 1;
-			$_SESSION["tipo_usuario"] = $tipo;
-
-			header("Location: ../$tipo/index.php");
-			exit();
-		} else {
-			$erro = "Usuário ou senha inválidos.";
-		}
+	$usuario = get_user($email);
+	if (empty($usuario)) {
+		$erro = "Usuário não existe";
+	} elseif ($senha !== $usuario["senha_hash"]) {
+		$erro = "Senha incorreta";
 	} else {
-		$erro = "Inputs preenchidos incorretamente.";
-	}
+		$_SESSION["logado"] = true;
+		$_SESSION["id_usuario"] = $usuario["id_usuario"];
+		$_SESSION["tipo_usuario"] = $usuario["tipo_usuario"];
 
+		header("Location: ". PAGE_URL . "/" . $_SESSION["tipo_usuario"]);
+		exit();
+	}
 }
 ?>
 
@@ -45,15 +41,7 @@ if ($form_enviado) {
 			echo "<p style='color: red;'>$erro</p>";
 		}
 	?>
-	<form method="post">
-		<fieldset id="tipo">
-			<input type="radio" name="tipo" id="paciente" value="paciente" checked>
-			<label for="paciente">Paciente</label>
-			&nbsp;&nbsp;&nbsp;
-			<input type="radio" name="tipo" id="profissional" value="profissional">
-			<label for="profissional">Profissional</label>
-		</fieldset>
-
+	<form method="post" name="form">
 		<fieldset class="simple_input">
 			<label for="email">Email:</label>
 			<input type="email" name="email" id="email" placeholder="teste@teste.com" required>
@@ -62,11 +50,23 @@ if ($form_enviado) {
 
 		<fieldset class="simple_input">
 			<label for="senha">Senha:</label>
+			<input type="password" name="senha_hash" id="senha_hash" hidden>
 			<input type="password" name="senha" id="senha" placeholder="123456" required>
 		</fieldset>
 
 		<a href="cadastro.php">Não possui conta?</a>
 		<button type="submit">Entrar</button>
 	</form>
+
+	<script src="<?= SRC_URL ?>/scripts/script.js"></script>
+	<script>
+		document.form.addEventListener("submit", async (event) => {
+			event.preventDefault();
+
+			this.senha_hash.value = await hash(this.senha.value);
+
+			document.form.submit();
+		})
+	</script>
 </body>
 </html>

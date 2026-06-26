@@ -3,7 +3,7 @@ USE consultapronta_poc;
 INSERT INTO usuario (nome, cpf, email, senha_hash, tipo_usuario, data_cadastro) VALUES 
 (
 	'Carlos Souza', '11122233344', 'carlos@email.com',
-	'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', -- senha123
+	'55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', -- senha123
 	'paciente', '2026-01-10'
 ),
 (
