@@ -162,3 +162,22 @@ CREATE TABLE anotacao_clinica (
 		REFERENCES relatorio(id_relatorio)
 		ON DELETE CASCADE
 );
+
+DROP TABLE IF EXISTS consulta;
+CREATE TABLE consulta (
+    id_consulta INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id_paciente INTEGER,
+    id_profissional INTEGER,
+    data_hora DATETIME NOT NULL,
+    status ENUM('agendada', 'realizada', 'cancelada') DEFAULT 'agendada',
+    motivo VARCHAR(255),
+    
+    CONSTRAINT FK_CONSULTA_id_paciente
+        FOREIGN KEY (id_paciente)
+        REFERENCES paciente(id_paciente)
+        ON DELETE CASCADE,
+    CONSTRAINT FK_CONSULTA_id_profissional
+        FOREIGN KEY (id_profissional)
+        REFERENCES profissional(id_profissional)
+        ON DELETE SET NULL
+);

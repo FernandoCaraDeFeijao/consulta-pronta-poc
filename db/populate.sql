@@ -66,3 +66,8 @@ INSERT INTO anotacao_clinica (id_profissional, id_relatorio, data_hora, texto_ev
 (4, 1, '2026-06-24 10:00:00', 'Febre cessou nas últimas 24 horas.', 'Infecção Viral a Esclarecer'),
 (4, 2, '2026-06-24 11:15:00', 'Orientei sobre gatilhos alérgicos no ambiente.', 'Asma Intermitente'),
 (4, 3, '2025-06-30 16:30:00', 'Alta do tratamento agudo, recomendado fisioterapia.', 'Lombalgia Mecânica');
+
+INSERT INTO consulta (id_paciente, id_profissional, data_hora, status, motivo) VALUES
+(1, 4, '2026-06-20 15:00:00', 'realizada', 'Consulta de rotina acompanhamento febre'),
+(2, 4, '2026-07-05 09:00:00', 'agendada', 'Avaliação de crise asmática recente'),
+(3, 4, '2025-05-25 11:30:00', 'cancelada', 'Retorno de exames de rotina lombar');
