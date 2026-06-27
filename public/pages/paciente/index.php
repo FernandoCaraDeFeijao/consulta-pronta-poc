@@ -36,6 +36,14 @@
 				</div>
 			</article>
 
+			<article class="dark" id="exames">
+				<h3>Exames</h3>
+
+				<div class="lista">
+					<?= get_patient_data_html($_SESSION["id_usuario"], "exame", "Não há exames") ?>
+				</div>
+			</article>
+
 			<article class="dark" id="sintomas">
 				<h3>Sintomas recentes</h3>
 
