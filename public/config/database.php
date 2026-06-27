@@ -220,9 +220,15 @@
 
 		$html = "";
 		foreach ($data as $item) {
-			$html .= "<article class=\"light\">". implode(", ", $item) ."</article>";
+			$base_url = $_SERVER["DOCUMENT_ROOT"] . "/includes";
+			$result = get_rendered_template($base_url . "/{$table}.php", $item);
+
+			$html .= (empty($result)) 
+				? "<article class=\"light\">". implode(", ", $item) ."</article>"
+				: $result;
 		}
 
+		// var_dump($data);
 		return $html;
 	}
 ?>

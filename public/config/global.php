@@ -23,3 +23,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/database.php";
 function get_post($name) {
 	return filter_input(INPUT_POST, $name);
 }
+
+function render_template($file, $data = []) {
+	if (file_exists($file)) {
+		extract($data);
+		include $file;
+	}
+}
+
+function get_rendered_template($file, $data = []) {
+	ob_start();
+	render_template($file, $data);
+	return ob_get_clean();
+}
