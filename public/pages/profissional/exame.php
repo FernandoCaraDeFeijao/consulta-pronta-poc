@@ -34,7 +34,11 @@ if ($form_enviado) {
 			align-items: center;
 			border-radius: 15px;
 			background-color: #F4EFE6;
+			width: fit-content;
 			color: #2B254D;
+		}
+		th {
+			padding: 20px 20px;
 		}
 		fieldset {
 			display: flex;
