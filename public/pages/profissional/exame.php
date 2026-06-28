@@ -39,7 +39,8 @@ if ($form_enviado) {
 			color: #2B254D;
 		}
 		th, td {
-			padding: 25px 25px;
+			padding: 10px 40px;
+			border-bottom: 1px solid #231C44;
 		}
 		fieldset {
 			display: flex;
@@ -91,6 +92,13 @@ if ($form_enviado) {
 			</tr>
 			<tr>
 				<td>Hemograma Completo</td>
+				<td>Cláudio Silva</td>
+				<td>Hospital Meridional Vitória</td>
+				<td>06/07/2008</td>
+				<td>Em Andamento</td>
+			</tr>
+			<tr>
+				<td>Lipidiograma</td>
 				<td>Cláudio Silva</td>
 				<td>Hospital Meridional Vitória</td>
 				<td>06/07/2008</td>
