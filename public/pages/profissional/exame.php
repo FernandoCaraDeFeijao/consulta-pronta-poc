@@ -62,7 +62,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/global.php";
 			display: flex;
 			align-items: center;
 			background-color: #F4EFE6;
-			width: 500px;
+			width: 600px;
 			margin: 60px auto 20px;
 			border-radius: 5px;
 			padding: 5px 10px;
@@ -97,9 +97,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/global.php";
 			<div class="pesquisa">
 				<span>⌕</span>
 				<input type="text" id="inputpesquisa" placeholder="Buscar exames">
-				<button class="botao-exame">
+				<input type="button" class="botao-exame">
 					<span>⊕</span> Solicitar exame
-				</button>
+				</input>
 			</div>
 		</div>
 		
