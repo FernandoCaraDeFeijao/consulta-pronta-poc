@@ -76,7 +76,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/global.php";
 		}
 		.containerhead {
 			display: grid;
-			grid-template-columns: repeat(2, 1fr);
 			gap: 20px;
 		}
 	</style>
