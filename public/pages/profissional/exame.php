@@ -32,9 +32,9 @@ if ($form_enviado) {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 28px;
-			border-radius: 20px;
+			border-radius: 15px;
 			background-color: #F4EFE6;
+			text-color: #2B254D;
 		}
 		fieldset {
 			display: flex;
