@@ -79,9 +79,16 @@ if ($form_enviado) {
 			background-color: #F4EFE6;
 			width: 400px;
 			margin: 20px auto;
-			border-radius: 20px;
+			border-radius: px;
 			padding: 5px 10px;
 			color: #2B254D;
+		}
+		.inputpesquisa{
+			padding: 8px;
+			border: none;
+			background-color: transparent;
+			width: 100%;
+			outline: none;
 		}
 	</style>
 </head>
@@ -93,7 +100,7 @@ if ($form_enviado) {
 			<h1>Exame</h1>
 		</header>
 		<div class="pesquisa">
-			<label>
+			<label class="inputpesquisa">
 				<input type="text" placeholder="Buscar exames">
 			</label>
 		</div>
