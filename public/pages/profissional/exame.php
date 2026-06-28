@@ -87,7 +87,7 @@ if ($form_enviado) {
 				<th>Resultado</th>
 			</tr>
 			<tr>
-				<td>Hemograma Completo</td>
+				<td style="text-color: #2B254D;">Hemograma Completo</td>
 				<td>Cláudio Silva</td>
 				<td>Hospital Meridional Vitória</td>
 				<td>06/07/2008</td>
