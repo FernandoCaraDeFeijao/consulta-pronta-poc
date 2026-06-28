@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="profissional.css">
 </head>
 <body>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/aside.php" ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/asideProfissional.php" ?>
 
 	<main>
 		<header>
