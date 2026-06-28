@@ -83,6 +83,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/global.php";
 			background-color: transparent;
 			font-size: 14px;
     		width: 200px;
+			border-radius: 15px;
 		}
 	</style>
 </head>
