@@ -34,9 +34,7 @@ if ($form_enviado) {
 			align-items: center;
 			border-radius: 15px;
 			background-color: #F4EFE6;
-		}
-		th {
-			text-color: #2B254D;
+			color: #2B254D;
 		}
 		fieldset {
 			display: flex;
@@ -87,7 +85,7 @@ if ($form_enviado) {
 				<th>Resultado</th>
 			</tr>
 			<tr>
-				<td style="text-color: #2B254D;">Hemograma Completo</td>
+				<td>Hemograma Completo</td>
 				<td>Cláudio Silva</td>
 				<td>Hospital Meridional Vitória</td>
 				<td>06/07/2008</td>
