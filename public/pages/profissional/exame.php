@@ -33,7 +33,6 @@ if ($form_enviado) {
 			flex-direction: column;
 			align-items: center;
 			gap: 28px;
-			width: fit-content;
 		}
 		fieldset {
 			display: flex;
@@ -72,52 +71,26 @@ if ($form_enviado) {
 
 	<main>
 		<header>
-			<h1>Sintoma</h1>
-			<h2>Relate e descreva o seu sintoma</h2>
+			<h1>Exame</h1>
 		</header>
 
-		<form method="post">
-			<fieldset>
-				<label for="descricao">O que você está sentindo</label>
+		<table>
+			<tr>
+				<th>Exame</th>
+				<th>Paciente</th>
+				<th>Local</th>
+				<th>Data</th>
+				<th>Resultado</th>
+			</tr>
+			<tr>
+				<td>Hemograma Completo</td>
+				<td>Cláudio Silva</td>
+				<td>Hospital Meridional Vitória</td>
+				<td>06/07/2008</td>
+				<td>Em Andamento</td>
+			</tr>
+		</table>
 
-				<input type="text" name="descricao" id="descricao" placeholder="Resuma seus sintomas" required>
-			</fieldset>
-			
-			<fieldset>
-				<p>Qual a intensidade do sintoma?</p>
-
-				<div class="input_wrapper">
-					<label for="intensidade" id="intensidade_atual">5</label>
-					<input type="range" name="intensidade" id="intensidade" min="1" max="10" value="5" required oninput="atualizarIntensidadeAtual(event)">
-				</div>
-			</fieldset>
-			
-			<fieldset>
-				<p>Qando começou?</p>
-
-				<div class="input_wrapper">
-					<input type="date" name="data" id="data" value="<?= date('Y-m-d') ?>">
-					<input type="time" name="hora" id="hora" value="<?= date('H:i') ?>">
-				</div>
-			</fieldset>
-			
-			<fieldset>
-				<label for="local">Em qual local do corpo?</label>
-
-				<select name="local" id="local" required>
-					<option value="" disabled selected hidden>Selecione o local</option>
-					<option value="abdomen">Abdomen</option>
-					<option value="barriga">Barriga</option>
-					<option value="cabeca">Cabeça</option>
-					<option value="costas">Costas</option>
-					<option value="olhos">Olhos</option>
-					<option value="pes">Pés</option>
-					<option value="pescoco">Pescoço</option>
-				</select>
-			</fieldset>
-
-			<button>Registrar</button>
-		</form>
 	</main>
 
 	<script>
