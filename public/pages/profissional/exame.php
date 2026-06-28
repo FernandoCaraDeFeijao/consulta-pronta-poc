@@ -78,6 +78,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/global.php";
 			display: grid;
 			gap: 20px;
 		}
+		.botao-exame {
+			border: 1px solid #2B254D;
+			background-color: transparent;
+			font-size: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -92,13 +97,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/global.php";
 				<span>⌕</span>
 				<input type="text" id="inputpesquisa" placeholder="Buscar exames">
 				<button class="botao-exame">
-				<span>⊕</span> Solicitar exame
-			</button>
+					<span>⊕</span> Solicitar exame
+				</button>
 			</div>
-
-			<button class="botao-exame">
-				<span>⊕</span> Solicitar exame
-			</button>
 		</div>
 		
 		<table>
